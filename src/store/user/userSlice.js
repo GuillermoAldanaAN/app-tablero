@@ -23,5 +23,7 @@ export const userSlice = createSlice({
 });
 
 export const { addUser, changeEmail } = userSlice.actions;
+//actions disponibles para utilizacion
 
 export default userSlice.reducer;
+//exportacion de reducer para acceder a states
