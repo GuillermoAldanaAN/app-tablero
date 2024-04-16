@@ -1,30 +1,23 @@
-import React, { useEffect } from 'react'
-import Tablero from './components/Tablero'
-import { Box } from '@chakra-ui/react'
-import { useDispatch } from 'react-redux';
-import { addUser } from './store/user/userSlice';
+import React from 'react';
+import {
+  Route,
+  Routes,
+} from "react-router-dom";
+
+
+import PresentacionPage from './pages/Presentacion';
+import "./index.css";
+import { NavBar } from './components/Nav';
+import ListadoPage from './pages/Listado';
 
 function App() {
-
-  const dispatch = useDispatch();
-  
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users/1")
-      .then((response) => response.json())
-      .then((data) => dispatch(addUser(data)))
-      .catch((error) => console.log(error))
-
-  }, []);
-
   return (
     <React.Fragment>
-        <Box display="flex"
-          alignItems="center"
-          justifyContent="center"
-          height="100vh">
-          <Tablero />
-        </Box>
-
+      <NavBar />
+     <Routes>
+        <Route path="/" element={ <PresentacionPage /> } />
+        <Route path="/listado" element={ <ListadoPage /> } />
+      </Routes>
     </React.Fragment>
   )
 }
